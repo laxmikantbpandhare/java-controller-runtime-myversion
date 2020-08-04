@@ -1,6 +1,8 @@
 package io.fabric8.memcached.operator.controller_runtime.pkg;
 
-public class Request {
+import io.fabric8.kubernetes.client.CustomResource;
+
+public class Request extends CustomResource {
 
     private String name;
     private String namespace;
