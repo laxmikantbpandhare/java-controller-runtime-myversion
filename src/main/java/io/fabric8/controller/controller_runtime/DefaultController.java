@@ -9,12 +9,16 @@ public class DefaultController {
     private Reconciler reconciler;
     private Request request;
 
-    public DefaultController(Reconciler reconciler,Request request) {
+    public DefaultController(Reconciler reconciler){//},Request request) {
         this.reconciler = reconciler;
-        this.request = request;
+//        this.request = request;
     }
 
-    public void run(){
+    public DefaultController() {
+//        this.reconciler =  reconciler;
+    }
+
+    public void runMethod(){
         System.out.println("calling RUN() from default controller controller_runtime");
         Result result= null;
         result = reconciler.reconcile(request);
