@@ -1,5 +1,7 @@
-io/fabric8/controller/controller_runtime/pkg/Reconciler.class
+io/fabric8/controller/controller_runtime/Controller.class
 io/fabric8/controller/controller_runtime/ControllerManager.class
-io/fabric8/controller/controller_runtime/pkg/Request.class
 io/fabric8/controller/controller_runtime/pkg/Result.class
+io/fabric8/controller/controller_runtime/Controllers.class
+io/fabric8/controller/controller_runtime/pkg/Reconciler.class
+io/fabric8/controller/controller_runtime/pkg/Request.class
 io/fabric8/controller/controller_runtime/DefaultController.class
