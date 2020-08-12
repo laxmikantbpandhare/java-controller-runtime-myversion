@@ -64,8 +64,8 @@ public class DefaultController implements Controller {
                             System.out.println("before request.take");
                             request = workQueue.take();
                             System.out.println("After request.take");
-                            System.out.println("Request in controller_runtime" + request.getNamespace());
-                            System.out.println("Request in controller_runtime" + request.getName());
+//                            System.out.println("Request in controller_runtime" + request.getNamespace());
+//                            System.out.println("Request in controller_runtime" + request.getName());
                             result = reconciler.reconcile(request);
 //                            workQueue.poll();
                         } catch (Throwable t) {
