@@ -5,7 +5,6 @@ import io.fabric8.controller.controller_runtime.pkg.Reconciler;
 import io.fabric8.controller.controller_runtime.pkg.Result;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
 import java.util.concurrent.*;
 
 public class DefaultController implements Controller {
@@ -47,27 +46,20 @@ public class DefaultController implements Controller {
 
     @Override
     public void run() {
-        System.out.println("calling RUN() from default controller controller_runtime");
+        System.out.println("Running the controller");
 
         // spawns worker threads for the controller.
         CountDownLatch latch = new CountDownLatch(workerCount);
         for (int i = 0; i < this.workerCount; i++) {
             final int workerIndex = i;
-            System.out.println("In for loop controller runtime");
             workerThreadPool.scheduleWithFixedDelay(
                     () -> {
-                        System.out.println("In workerThreadPool"+this.name+ workerIndex);
                         log.debug("Starting controller {} worker {}..", this.name, workerIndex);
                         try {
                             Result result= null;
                             Request request = null;
-                            System.out.println("before request.take");
                             request = workQueue.take();
-                            System.out.println("After request.take");
-//                            System.out.println("Request in controller_runtime" + request.getNamespace());
-//                            System.out.println("Request in controller_runtime" + request.getName());
                             result = reconciler.reconcile(request);
-//                            workQueue.poll();
                         } catch (Throwable t) {
                             log.error("Unexpected controller loop abortion", t);
                         }

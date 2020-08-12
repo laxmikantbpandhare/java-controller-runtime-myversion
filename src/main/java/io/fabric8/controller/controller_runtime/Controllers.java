@@ -1,6 +1,5 @@
 package io.fabric8.controller.controller_runtime;
 
-
 import com.google.common.util.concurrent.ThreadFactoryBuilder;
 import java.util.concurrent.ThreadFactory;
 import org.slf4j.Logger;
