@@ -2,11 +2,7 @@ package io.fabric8.controller.controller_runtime;
 
 
 import com.google.common.util.concurrent.ThreadFactoryBuilder;
-//import io.kubernetes.client.common.KubernetesObject;
-//import io.kubernetes.client.extended.controller.reconciler.Request;
-//import io.kubernetes.client.openapi.models.V1ObjectMeta;
 import java.util.concurrent.ThreadFactory;
-import java.util.function.Function;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -14,21 +10,6 @@ import org.slf4j.LoggerFactory;
 public class Controllers {
 
     private static final Logger log = LoggerFactory.getLogger(Controllers.class);
-
-    /**
-     * The Default key func function works for work-queue, which extracts namespace and name via
-     * reflection from the objects.
-     *
-     * @param <ApiType> the type parameter
-     * @return the function
-     */
-//    public static <ApiType extends KubernetesObject>
-//    Function<ApiType, Request> defaultReflectiveKeyFunc() {
-//        return (ApiType obj) -> {
-//            V1ObjectMeta objectMeta = obj.getMetadata();
-//            return new Request(objectMeta.getNamespace(), objectMeta.getName());
-//        };
-//    }
 
     /**
      * Named thread factory for constructing controller, useful when debugging dumping status of

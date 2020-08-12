@@ -39,7 +39,6 @@ public class DefaultController implements Controller {
     public DefaultController(Reconciler reconciler,BlockingQueue<Request> workQueue){//},Request request)
         this.reconciler = reconciler;
         this.workQueue = workQueue;
-//        this.request = request;
     }
 
     public DefaultController(){
@@ -91,11 +90,6 @@ public class DefaultController implements Controller {
             log.error("Fail to start controller {}: missing worker thread-pool.", this.name);
             return false;
         }
-//        if (!isReady()) {
-//            log.error(
-//                    "Fail to start controller {}: Timed out waiting for cache to be synced.", this.name);
-//            return false;
-//        }
         return true;
     }
 
