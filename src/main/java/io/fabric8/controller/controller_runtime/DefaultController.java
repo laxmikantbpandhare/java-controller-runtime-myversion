@@ -10,27 +10,9 @@ import java.util.concurrent.*;
 public class DefaultController implements Controller {
     private static final Logger log = LoggerFactory.getLogger(DefaultController.class);
 
-    public Reconciler getReconciler() {
-        return reconciler;
-    }
-
-    public void setReconciler(Reconciler reconciler) {
-        this.reconciler = reconciler;
-    }
-
     private Reconciler reconciler;
     private Request request;
-
-    public BlockingQueue<Request> getWorkQueue() {
-        return workQueue;
-    }
-
-    public void setWorkQueue(BlockingQueue<Request> workQueue) {
-        this.workQueue = workQueue;
-    }
-
     private BlockingQueue<Request> workQueue =  new ArrayBlockingQueue<>(1024);
-
     private String name;
     private int workerCount;
     private ScheduledExecutorService workerThreadPool;
@@ -106,26 +88,93 @@ public class DefaultController implements Controller {
         workerThreadPool.shutdown();
     }
 
+
+    /**
+     * Gets reconciler.
+     *
+     * @return the get reconciler
+     */
+    public Reconciler getReconciler() {
+        return reconciler;
+    }
+
+    /**
+     * Sets reconciler object.
+     *
+     * @param reconciler the reconciler object
+     */
+    public void setReconciler(Reconciler reconciler) {
+        this.reconciler = reconciler;
+    }
+
+    /**
+     * Gets workQueue.
+     *
+     * @return the get workQueue
+     */
+    public BlockingQueue<Request> getWorkQueue() {
+        return workQueue;
+    }
+
+    /**
+     * Sets workQueue.
+     *
+     * @param workQueue the workQueue
+     */
+    public void setWorkQueue(BlockingQueue<Request> workQueue) {
+        this.workQueue = workQueue;
+    }
+
+    /**
+     * Gets name.
+     *
+     * @return the name
+     */
     public String getName() {
         return name;
     }
 
+    /**
+     * Sets name.
+     *
+     * @param name the name
+     */
     public void setName(String name) {
         this.name = name;
     }
 
+    /**
+     * Gets workerCount.
+     *
+     * @return the get workerCount
+     */
     public int getWorkerCount() {
         return workerCount;
     }
 
+    /**
+     * Sets workerCount.
+     *
+     * @param workerCount the workerCount
+     */
     public void setWorkerCount(int workerCount) {
         this.workerCount = workerCount;
     }
 
+    /**
+     * Gets workerThreadPool.
+     *
+     * @return the get workerThreadPool
+     */
     public ScheduledExecutorService getWorkerThreadPool() {
         return workerThreadPool;
     }
 
+    /**
+     * Sets workerThreadPool.
+     *
+     * @param workerThreadPool the workerThreadPool
+     */
     public void setWorkerThreadPool(ScheduledExecutorService workerThreadPool) {
         this.workerThreadPool = workerThreadPool;
     }
