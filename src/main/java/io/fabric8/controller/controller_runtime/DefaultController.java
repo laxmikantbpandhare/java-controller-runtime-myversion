@@ -35,6 +35,12 @@ public class DefaultController implements Controller {
     private int workerCount;
     private ScheduledExecutorService workerThreadPool;
 
+    /**
+     * Instantiates a new Default controller.
+     *
+     * @param reconciler the reconciler
+     * @param workQueue the work queue
+     */
     public DefaultController(Reconciler reconciler,BlockingQueue<Request> workQueue){//},Request request)
         this.reconciler = reconciler;
         this.workQueue = workQueue;
@@ -47,6 +53,11 @@ public class DefaultController implements Controller {
     @Override
     public void run() {
         System.out.println("Running the controller");
+
+        if(!preFlightCheck()){
+            log.error("Controller {} failed pre-run check, exiting..", this.name);
+            return;
+        }
 
         // spawns worker threads for the controller.
         CountDownLatch latch = new CountDownLatch(workerCount);
@@ -72,7 +83,12 @@ public class DefaultController implements Controller {
         }
     }
 
-    // preFlightCheck checks if the controller is ready for working.
+    /**
+     * preFlightCheck checks if the controller is ready for working.
+     *
+     * @param
+     * @return boolean value
+     */
     private boolean preFlightCheck() {
         if (workerCount <= 0) {
             log.error("Fail to start controller {}: worker count must be positive.", this.name);

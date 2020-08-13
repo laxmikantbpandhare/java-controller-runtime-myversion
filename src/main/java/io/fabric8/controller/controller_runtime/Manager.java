@@ -7,12 +7,23 @@ import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
+/**
+ * The type Controller manager manages a set of controllers' lifecycle and also their informer
+ * factory.
+ */
 public class Manager implements Controller{
     private static final Logger logger = LoggerFactory.getLogger(DefaultController.class);
     private Controller[] controllers;
     private SharedInformerFactory informerFactory;
 
     private ExecutorService controllerThreadPool;
+
+    /**
+     * Instantiates a new Controller manager.
+     *
+     * @param factory the sharedinformerfactory initialized.
+     * @param controllers the controllers to be managed.
+     */
     public Manager(SharedInformerFactory factory, Controller[] controllers) {
         this.controllers = controllers;
         this.informerFactory = factory;
@@ -54,6 +65,5 @@ public class Manager implements Controller{
         } finally {
             logger.info("Controller-Manager {} exited");
         }
-
     }
 }
